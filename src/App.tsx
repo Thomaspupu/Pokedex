@@ -1,62 +1,53 @@
-import { useState } from "react";
+import MenuList from "./components/MenuList";
+
 import "./App.css";
 
-import PokemonCard from "./components/PokemonCard";
-
-const pokemonList = [
+const foodItems = [
   {
-    name: "bulbasaur",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png",
+    id: 1,
+    itemName: "Caesar's Salad",
+    description: "The original Caesar's Salad recipe",
+    foodImage:
+      "https://cdn.britannica.com/14/234014-050-CB842159/Caesar-salad-side-view.jpg",
+    price: 12,
+    isFavorite: false,
   },
   {
-    name: "charmander",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/4.png",
+    id: 2,
+    itemName: "Spaghetti Carbonara",
+    description: "Better than your nonna's! All local and fresh ingredients",
+    foodImage:
+      "https://cdn.britannica.com/96/238196-050-C5560987/Plate-of-traditional-Italian-spaghetti-carbonara-surrounded-by-the-ingredients-use-to-make-it.jpg",
+    price: 15,
+    isFavorite: true,
   },
   {
-    name: "squirtle",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png",
+    id: 3,
+    itemName: "Grilled Fish",
+    description: "Fish of the day, grilled with a side of vegetables",
+    foodImage:
+      "https://cdn.britannica.com/38/235438-050-08E3AE20/Grilled-barramundi-steak-on-a-bed-of-vegetables.jpg",
+    price: 20,
+    isFavorite: false,
   },
   {
-    name: "pikachu",
-    imgSrc:
-      "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png",
-  },
-  {
-    name: "mew",
+    id: 4,
+    itemName: "Steak",
+    description: "Meat!",
+    foodImage:
+      "https://cdn.britannica.com/70/189770-050-AA419662/New-York-City-steak-Delmonico-rib-eyes.jpg",
+    price: 30,
+    isFavorite: false,
   },
 ];
 
 function App() {
-  const [pokemonName, setPokemonName] = useState("bulbasaur");
-
-  const pokemon = pokemonList.find((pokemon) => pokemon.name === pokemonName);
-
-  if (pokemon == null) {
-    throw new Error("Invalid pokemon name");
-  }
-
   return (
-    <div>
-      <div>
-        <nav>
-          {pokemonList.map((pokemon) => (
-            <button
-              type="button"
-              key={pokemon.name}
-              onClick={() => setPokemonName(pokemon.name)}
-            >
-              {pokemon.name}
-            </button>
-          ))}
-        </nav>
-      </div>
-      <div>
-        <PokemonCard pokemon={pokemon} />
-      </div>
-    </div>
+    <main>
+      <h1>MarmiWild</h1>
+      {/* pass the variable foodItems as props to MenuList component */}
+      <MenuList foodItems={foodItems} />
+    </main>
   );
 }
 
